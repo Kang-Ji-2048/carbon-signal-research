@@ -1,0 +1,17 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+
+# Generated build output
+dist/
+
+# Derived ETL output (regenerate with: python app.py --etl)
+data/processed/
+
+# Tooling / local
+.claude/
+.DS_Store
+.env

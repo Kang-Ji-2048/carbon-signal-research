@@ -1,0 +1,591 @@
+year,region,country,sector,finance_type,value_usd_mn
+2013,Sub-Saharan Africa,Kenya,Renewable Energy,Non-Concessional Loan,710.74
+2013,Sub-Saharan Africa,Nigeria,Renewable Energy,Non-Concessional Loan,370.75
+2013,Sub-Saharan Africa,South Africa,Renewable Energy,Grant,278.7
+2013,Sub-Saharan Africa,Ethiopia,Renewable Energy,Equity,117.84
+2013,Sub-Saharan Africa,Ghana,Renewable Energy,Equity,251.56
+2013,Sub-Saharan Africa,Tanzania,Renewable Energy,Bond,152.01
+2013,Sub-Saharan Africa,Tanzania,Renewable Energy,Bond,332.15
+2013,South Asia,India,Renewable Energy,Equity,136.94
+2013,South Asia,Bangladesh,Renewable Energy,Grant,381.63
+2013,South Asia,Pakistan,Renewable Energy,Non-Concessional Loan,160.53
+2013,South Asia,Sri Lanka,Renewable Energy,Equity,13.89
+2013,South Asia,Sri Lanka,Renewable Energy,Non-Concessional Loan,160.19
+2013,South Asia,Nepal,Renewable Energy,Non-Concessional Loan,709.53
+2013,South Asia,Nepal,Renewable Energy,Non-Concessional Loan,749.71
+2013,East Asia & Pacific,China,Renewable Energy,Non-Concessional Loan,63.87
+2013,East Asia & Pacific,Indonesia,Renewable Energy,Bond,179.22
+2013,East Asia & Pacific,Indonesia,Renewable Energy,Non-Concessional Loan,71.69
+2013,East Asia & Pacific,Vietnam,Renewable Energy,Bond,1.38
+2013,East Asia & Pacific,Philippines,Renewable Energy,Bond,87.42
+2013,East Asia & Pacific,Philippines,Renewable Energy,Equity,17.03
+2013,East Asia & Pacific,Thailand,Renewable Energy,Bond,171.09
+2013,East Asia & Pacific,Thailand,Renewable Energy,Bond,294.0
+2013,Latin America & Caribbean,Brazil,Renewable Energy,Equity,44.48
+2013,Latin America & Caribbean,Mexico,Renewable Energy,Equity,43.61
+2013,Latin America & Caribbean,Colombia,Renewable Energy,Equity,55.47
+2013,Latin America & Caribbean,Chile,Renewable Energy,Bond,405.25
+2013,Latin America & Caribbean,Argentina,Renewable Energy,Bond,64.3
+2013,Latin America & Caribbean,Argentina,Renewable Energy,Bond,90.19
+2013,Europe & Central Asia,Turkey,Renewable Energy,Equity,42.57
+2013,Europe & Central Asia,Ukraine,Renewable Energy,Bond,250.78
+2013,Europe & Central Asia,Ukraine,Renewable Energy,Non-Concessional Loan,25.39
+2013,Europe & Central Asia,Poland,Renewable Energy,Bond,266.76
+2013,Europe & Central Asia,Romania,Renewable Energy,Non-Concessional Loan,195.86
+2013,Europe & Central Asia,Romania,Renewable Energy,Equity,148.66
+2013,Europe & Central Asia,Kazakhstan,Renewable Energy,Bond,45.7
+2013,Middle East & North Africa,Morocco,Renewable Energy,Equity,295.98
+2013,Middle East & North Africa,Morocco,Renewable Energy,Non-Concessional Loan,800.05
+2013,Middle East & North Africa,Egypt,Renewable Energy,Bond,81.02
+2013,Middle East & North Africa,Egypt,Renewable Energy,Equity,46.53
+2013,Middle East & North Africa,Jordan,Renewable Energy,Grant,325.26
+2013,Middle East & North Africa,Tunisia,Renewable Energy,Bond,78.61
+2013,Middle East & North Africa,Tunisia,Renewable Energy,Grant,79.34
+2014,Sub-Saharan Africa,Kenya,Renewable Energy,Bond,21.46
+2014,Sub-Saharan Africa,Kenya,Renewable Energy,Bond,282.05
+2014,Sub-Saharan Africa,Nigeria,Renewable Energy,Grant,85.66
+2014,Sub-Saharan Africa,South Africa,Renewable Energy,Bond,1.14
+2014,Sub-Saharan Africa,South Africa,Renewable Energy,Non-Concessional Loan,69.08
+2014,Sub-Saharan Africa,Ethiopia,Renewable Energy,Equity,97.78
+2014,Sub-Saharan Africa,Ghana,Renewable Energy,Equity,15.91
+2014,Sub-Saharan Africa,Tanzania,Renewable Energy,Equity,302.21
+2014,Sub-Saharan Africa,Tanzania,Renewable Energy,Bond,8.82
+2014,South Asia,India,Renewable Energy,Equity,547.56
+2014,South Asia,Bangladesh,Renewable Energy,Non-Concessional Loan,201.16
+2014,South Asia,Pakistan,Renewable Energy,Bond,202.63
+2014,South Asia,Sri Lanka,Renewable Energy,Equity,206.67
+2014,South Asia,Nepal,Renewable Energy,Non-Concessional Loan,202.04
+2014,South Asia,Nepal,Renewable Energy,Non-Concessional Loan,117.79
+2014,East Asia & Pacific,China,Renewable Energy,Bond,260.21
+2014,East Asia & Pacific,China,Renewable Energy,Equity,128.69
+2014,East Asia & Pacific,Indonesia,Renewable Energy,Grant,26.51
+2014,East Asia & Pacific,Vietnam,Renewable Energy,Non-Concessional Loan,250.68
+2014,East Asia & Pacific,Vietnam,Renewable Energy,Bond,58.22
+2014,East Asia & Pacific,Philippines,Renewable Energy,Bond,98.13
+2014,East Asia & Pacific,Philippines,Renewable Energy,Equity,172.29
+2014,East Asia & Pacific,Thailand,Renewable Energy,Equity,4.22
+2014,East Asia & Pacific,Thailand,Renewable Energy,Bond,267.08
+2014,Latin America & Caribbean,Brazil,Renewable Energy,Bond,506.19
+2014,Latin America & Caribbean,Brazil,Renewable Energy,Grant,441.08
+2014,Latin America & Caribbean,Mexico,Renewable Energy,Equity,525.3
+2014,Latin America & Caribbean,Colombia,Renewable Energy,Equity,192.81
+2014,Latin America & Caribbean,Colombia,Renewable Energy,Equity,59.5
+2014,Latin America & Caribbean,Chile,Renewable Energy,Grant,453.03
+2014,Latin America & Caribbean,Chile,Renewable Energy,Equity,447.15
+2014,Latin America & Caribbean,Argentina,Renewable Energy,Non-Concessional Loan,361.98
+2014,Latin America & Caribbean,Argentina,Renewable Energy,Equity,41.28
+2014,Europe & Central Asia,Turkey,Renewable Energy,Bond,723.37
+2014,Europe & Central Asia,Ukraine,Renewable Energy,Bond,26.34
+2014,Europe & Central Asia,Poland,Renewable Energy,Grant,378.55
+2014,Europe & Central Asia,Romania,Renewable Energy,Equity,175.87
+2014,Europe & Central Asia,Romania,Renewable Energy,Non-Concessional Loan,36.83
+2014,Europe & Central Asia,Kazakhstan,Renewable Energy,Equity,19.32
+2014,Europe & Central Asia,Kazakhstan,Renewable Energy,Equity,785.42
+2014,Middle East & North Africa,Morocco,Renewable Energy,Equity,1.58
+2014,Middle East & North Africa,Morocco,Renewable Energy,Equity,183.88
+2014,Middle East & North Africa,Egypt,Renewable Energy,Equity,57.15
+2014,Middle East & North Africa,Egypt,Renewable Energy,Bond,11.89
+2014,Middle East & North Africa,Jordan,Renewable Energy,Grant,263.93
+2014,Middle East & North Africa,Jordan,Renewable Energy,Grant,56.14
+2014,Middle East & North Africa,Tunisia,Renewable Energy,Equity,182.31
+2015,Sub-Saharan Africa,Kenya,Renewable Energy,Non-Concessional Loan,322.27
+2015,Sub-Saharan Africa,Nigeria,Renewable Energy,Bond,71.92
+2015,Sub-Saharan Africa,Nigeria,Renewable Energy,Equity,130.89
+2015,Sub-Saharan Africa,South Africa,Renewable Energy,Bond,71.72
+2015,Sub-Saharan Africa,Ethiopia,Renewable Energy,Bond,202.5
+2015,Sub-Saharan Africa,Ethiopia,Renewable Energy,Bond,422.53
+2015,Sub-Saharan Africa,Ghana,Renewable Energy,Equity,201.54
+2015,Sub-Saharan Africa,Tanzania,Renewable Energy,Non-Concessional Loan,48.87
+2015,Sub-Saharan Africa,Tanzania,Renewable Energy,Bond,152.4
+2015,South Asia,India,Renewable Energy,Bond,30.62
+2015,South Asia,Bangladesh,Renewable Energy,Equity,147.39
+2015,South Asia,Bangladesh,Renewable Energy,Equity,56.06
+2015,South Asia,Pakistan,Renewable Energy,Non-Concessional Loan,302.08
+2015,South Asia,Sri Lanka,Renewable Energy,Bond,59.89
+2015,South Asia,Sri Lanka,Renewable Energy,Non-Concessional Loan,218.36
+2015,South Asia,Nepal,Renewable Energy,Grant,45.13
+2015,South Asia,Nepal,Renewable Energy,Non-Concessional Loan,132.07
+2015,East Asia & Pacific,China,Renewable Energy,Grant,808.11
+2015,East Asia & Pacific,China,Renewable Energy,Equity,115.42
+2015,East Asia & Pacific,Indonesia,Renewable Energy,Grant,99.36
+2015,East Asia & Pacific,Vietnam,Renewable Energy,Bond,45.72
+2015,East Asia & Pacific,Philippines,Renewable Energy,Equity,166.85
+2015,East Asia & Pacific,Thailand,Renewable Energy,Equity,0.16
+2015,Latin America & Caribbean,Brazil,Renewable Energy,Equity,98.1
+2015,Latin America & Caribbean,Brazil,Renewable Energy,Equity,166.03
+2015,Latin America & Caribbean,Mexico,Renewable Energy,Non-Concessional Loan,493.41
+2015,Latin America & Caribbean,Mexico,Renewable Energy,Equity,48.4
+2015,Latin America & Caribbean,Colombia,Renewable Energy,Non-Concessional Loan,1.58
+2015,Latin America & Caribbean,Chile,Renewable Energy,Equity,147.66
+2015,Latin America & Caribbean,Argentina,Renewable Energy,Bond,594.75
+2015,Europe & Central Asia,Turkey,Renewable Energy,Bond,36.31
+2015,Europe & Central Asia,Turkey,Renewable Energy,Equity,94.26
+2015,Europe & Central Asia,Ukraine,Renewable Energy,Bond,154.35
+2015,Europe & Central Asia,Ukraine,Renewable Energy,Equity,207.49
+2015,Europe & Central Asia,Poland,Renewable Energy,Non-Concessional Loan,370.62
+2015,Europe & Central Asia,Romania,Renewable Energy,Bond,52.11
+2015,Europe & Central Asia,Kazakhstan,Renewable Energy,Bond,27.59
+2015,Europe & Central Asia,Kazakhstan,Renewable Energy,Equity,41.47
+2015,Middle East & North Africa,Morocco,Renewable Energy,Equity,13.16
+2015,Middle East & North Africa,Morocco,Renewable Energy,Bond,54.35
+2015,Middle East & North Africa,Egypt,Renewable Energy,Non-Concessional Loan,577.49
+2015,Middle East & North Africa,Jordan,Renewable Energy,Equity,306.04
+2015,Middle East & North Africa,Jordan,Renewable Energy,Equity,73.22
+2015,Middle East & North Africa,Tunisia,Renewable Energy,Equity,772.42
+2015,Middle East & North Africa,Tunisia,Renewable Energy,Grant,72.0
+2016,Sub-Saharan Africa,Kenya,Renewable Energy,Equity,91.81
+2016,Sub-Saharan Africa,Nigeria,Renewable Energy,Grant,317.07
+2016,Sub-Saharan Africa,South Africa,Renewable Energy,Equity,162.0
+2016,Sub-Saharan Africa,Ethiopia,Renewable Energy,Bond,282.73
+2016,Sub-Saharan Africa,Ghana,Renewable Energy,Equity,36.63
+2016,Sub-Saharan Africa,Ghana,Renewable Energy,Bond,27.05
+2016,Sub-Saharan Africa,Tanzania,Renewable Energy,Grant,49.97
+2016,South Asia,India,Renewable Energy,Equity,42.01
+2016,South Asia,India,Renewable Energy,Bond,76.78
+2016,South Asia,Bangladesh,Renewable Energy,Non-Concessional Loan,162.68
+2016,South Asia,Pakistan,Renewable Energy,Equity,620.96
+2016,South Asia,Pakistan,Renewable Energy,Equity,46.28
+2016,South Asia,Sri Lanka,Renewable Energy,Bond,12.33
+2016,South Asia,Nepal,Renewable Energy,Grant,77.3
+2016,South Asia,Nepal,Renewable Energy,Grant,120.21
+2016,East Asia & Pacific,China,Renewable Energy,Equity,276.69
+2016,East Asia & Pacific,China,Renewable Energy,Equity,49.17
+2016,East Asia & Pacific,Indonesia,Renewable Energy,Grant,394.34
+2016,East Asia & Pacific,Vietnam,Renewable Energy,Non-Concessional Loan,85.7
+2016,East Asia & Pacific,Philippines,Renewable Energy,Equity,348.06
+2016,East Asia & Pacific,Philippines,Renewable Energy,Non-Concessional Loan,119.62
+2016,East Asia & Pacific,Thailand,Renewable Energy,Equity,349.83
+2016,Latin America & Caribbean,Brazil,Renewable Energy,Equity,525.51
+2016,Latin America & Caribbean,Brazil,Renewable Energy,Bond,136.23
+2016,Latin America & Caribbean,Mexico,Renewable Energy,Equity,483.03
+2016,Latin America & Caribbean,Mexico,Renewable Energy,Equity,215.14
+2016,Latin America & Caribbean,Colombia,Renewable Energy,Equity,204.19
+2016,Latin America & Caribbean,Colombia,Renewable Energy,Grant,410.14
+2016,Latin America & Caribbean,Chile,Renewable Energy,Bond,169.3
+2016,Latin America & Caribbean,Argentina,Renewable Energy,Bond,355.13
+2016,Latin America & Caribbean,Argentina,Renewable Energy,Equity,151.57
+2016,Europe & Central Asia,Turkey,Renewable Energy,Grant,136.17
+2016,Europe & Central Asia,Ukraine,Renewable Energy,Equity,7.04
+2016,Europe & Central Asia,Poland,Renewable Energy,Equity,222.86
+2016,Europe & Central Asia,Poland,Renewable Energy,Non-Concessional Loan,123.47
+2016,Europe & Central Asia,Romania,Renewable Energy,Equity,622.54
+2016,Europe & Central Asia,Kazakhstan,Renewable Energy,Bond,91.81
+2016,Europe & Central Asia,Kazakhstan,Renewable Energy,Equity,158.13
+2016,Middle East & North Africa,Morocco,Renewable Energy,Non-Concessional Loan,45.5
+2016,Middle East & North Africa,Morocco,Renewable Energy,Non-Concessional Loan,393.54
+2016,Middle East & North Africa,Egypt,Renewable Energy,Equity,603.88
+2016,Middle East & North Africa,Jordan,Renewable Energy,Equity,142.3
+2016,Middle East & North Africa,Jordan,Renewable Energy,Grant,87.4
+2016,Middle East & North Africa,Tunisia,Renewable Energy,Bond,913.38
+2017,Sub-Saharan Africa,Kenya,Renewable Energy,Bond,66.2
+2017,Sub-Saharan Africa,Kenya,Renewable Energy,Non-Concessional Loan,363.15
+2017,Sub-Saharan Africa,Nigeria,Renewable Energy,Equity,125.94
+2017,Sub-Saharan Africa,South Africa,Renewable Energy,Grant,12.84
+2017,Sub-Saharan Africa,South Africa,Renewable Energy,Non-Concessional Loan,740.23
+2017,Sub-Saharan Africa,Ethiopia,Renewable Energy,Non-Concessional Loan,158.93
+2017,Sub-Saharan Africa,Ghana,Renewable Energy,Equity,64.86
+2017,Sub-Saharan Africa,Ghana,Renewable Energy,Non-Concessional Loan,9.4
+2017,Sub-Saharan Africa,Tanzania,Renewable Energy,Non-Concessional Loan,58.1
+2017,Sub-Saharan Africa,Tanzania,Renewable Energy,Non-Concessional Loan,74.59
+2017,South Asia,India,Renewable Energy,Equity,117.09
+2017,South Asia,Bangladesh,Renewable Energy,Grant,731.53
+2017,South Asia,Pakistan,Renewable Energy,Equity,25.63
+2017,South Asia,Sri Lanka,Renewable Energy,Bond,169.45
+2017,South Asia,Sri Lanka,Renewable Energy,Bond,49.32
+2017,South Asia,Nepal,Renewable Energy,Grant,67.64
+2017,South Asia,Nepal,Renewable Energy,Bond,192.69
+2017,East Asia & Pacific,China,Renewable Energy,Non-Concessional Loan,192.68
+2017,East Asia & Pacific,Indonesia,Renewable Energy,Equity,621.89
+2017,East Asia & Pacific,Indonesia,Renewable Energy,Bond,374.25
+2017,East Asia & Pacific,Vietnam,Renewable Energy,Non-Concessional Loan,352.07
+2017,East Asia & Pacific,Philippines,Renewable Energy,Bond,146.37
+2017,East Asia & Pacific,Philippines,Renewable Energy,Non-Concessional Loan,269.82
+2017,East Asia & Pacific,Thailand,Renewable Energy,Equity,274.57
+2017,East Asia & Pacific,Thailand,Renewable Energy,Bond,41.11
+2017,Latin America & Caribbean,Brazil,Renewable Energy,Equity,603.0
+2017,Latin America & Caribbean,Mexico,Renewable Energy,Non-Concessional Loan,137.33
+2017,Latin America & Caribbean,Mexico,Renewable Energy,Equity,165.22
+2017,Latin America & Caribbean,Colombia,Renewable Energy,Bond,316.2
+2017,Latin America & Caribbean,Colombia,Renewable Energy,Bond,13.69
+2017,Latin America & Caribbean,Chile,Renewable Energy,Equity,64.65
+2017,Latin America & Caribbean,Chile,Renewable Energy,Bond,927.45
+2017,Latin America & Caribbean,Argentina,Renewable Energy,Equity,79.32
+2017,Latin America & Caribbean,Argentina,Renewable Energy,Grant,66.46
+2017,Europe & Central Asia,Turkey,Renewable Energy,Non-Concessional Loan,8.44
+2017,Europe & Central Asia,Ukraine,Renewable Energy,Bond,98.56
+2017,Europe & Central Asia,Ukraine,Renewable Energy,Bond,130.78
+2017,Europe & Central Asia,Poland,Renewable Energy,Non-Concessional Loan,96.91
+2017,Europe & Central Asia,Poland,Renewable Energy,Equity,639.48
+2017,Europe & Central Asia,Romania,Renewable Energy,Equity,26.96
+2017,Europe & Central Asia,Romania,Renewable Energy,Equity,67.13
+2017,Europe & Central Asia,Kazakhstan,Renewable Energy,Bond,663.18
+2017,Europe & Central Asia,Kazakhstan,Renewable Energy,Non-Concessional Loan,129.56
+2017,Middle East & North Africa,Morocco,Renewable Energy,Equity,119.86
+2017,Middle East & North Africa,Morocco,Renewable Energy,Grant,430.65
+2017,Middle East & North Africa,Egypt,Renewable Energy,Non-Concessional Loan,192.09
+2017,Middle East & North Africa,Jordan,Renewable Energy,Equity,111.84
+2017,Middle East & North Africa,Jordan,Renewable Energy,Non-Concessional Loan,357.71
+2017,Middle East & North Africa,Tunisia,Renewable Energy,Non-Concessional Loan,279.57
+2017,Middle East & North Africa,Tunisia,Renewable Energy,Equity,149.22
+2018,Sub-Saharan Africa,Kenya,Renewable Energy,Equity,1128.47
+2018,Sub-Saharan Africa,Nigeria,Renewable Energy,Grant,102.85
+2018,Sub-Saharan Africa,Nigeria,Renewable Energy,Non-Concessional Loan,91.79
+2018,Sub-Saharan Africa,South Africa,Renewable Energy,Equity,220.6
+2018,Sub-Saharan Africa,Ethiopia,Renewable Energy,Equity,407.05
+2018,Sub-Saharan Africa,Ghana,Renewable Energy,Equity,1248.33
+2018,Sub-Saharan Africa,Ghana,Renewable Energy,Non-Concessional Loan,197.24
+2018,Sub-Saharan Africa,Tanzania,Renewable Energy,Bond,349.66
+2018,Sub-Saharan Africa,Tanzania,Renewable Energy,Grant,107.34
+2018,South Asia,India,Renewable Energy,Non-Concessional Loan,194.29
+2018,South Asia,India,Renewable Energy,Bond,229.91
+2018,South Asia,Bangladesh,Renewable Energy,Grant,406.53
+2018,South Asia,Pakistan,Renewable Energy,Equity,295.28
+2018,South Asia,Sri Lanka,Renewable Energy,Equity,803.25
+2018,South Asia,Sri Lanka,Renewable Energy,Equity,80.87
+2018,South Asia,Nepal,Renewable Energy,Bond,197.41
+2018,South Asia,Nepal,Renewable Energy,Equity,35.38
+2018,East Asia & Pacific,China,Renewable Energy,Equity,368.11
+2018,East Asia & Pacific,Indonesia,Renewable Energy,Bond,1.46
+2018,East Asia & Pacific,Indonesia,Renewable Energy,Non-Concessional Loan,42.01
+2018,East Asia & Pacific,Vietnam,Renewable Energy,Bond,87.46
+2018,East Asia & Pacific,Vietnam,Renewable Energy,Bond,67.96
+2018,East Asia & Pacific,Philippines,Renewable Energy,Equity,43.77
+2018,East Asia & Pacific,Philippines,Renewable Energy,Equity,1659.23
+2018,East Asia & Pacific,Thailand,Renewable Energy,Grant,126.64
+2018,Latin America & Caribbean,Brazil,Renewable Energy,Bond,574.96
+2018,Latin America & Caribbean,Mexico,Renewable Energy,Bond,178.86
+2018,Latin America & Caribbean,Colombia,Renewable Energy,Non-Concessional Loan,347.51
+2018,Latin America & Caribbean,Colombia,Renewable Energy,Non-Concessional Loan,534.54
+2018,Latin America & Caribbean,Chile,Renewable Energy,Non-Concessional Loan,191.63
+2018,Latin America & Caribbean,Chile,Renewable Energy,Equity,277.49
+2018,Latin America & Caribbean,Argentina,Renewable Energy,Grant,57.28
+2018,Latin America & Caribbean,Argentina,Renewable Energy,Grant,446.82
+2018,Europe & Central Asia,Turkey,Renewable Energy,Grant,524.77
+2018,Europe & Central Asia,Ukraine,Renewable Energy,Bond,255.69
+2018,Europe & Central Asia,Ukraine,Renewable Energy,Bond,30.47
+2018,Europe & Central Asia,Poland,Renewable Energy,Bond,244.09
+2018,Europe & Central Asia,Romania,Renewable Energy,Bond,813.91
+2018,Europe & Central Asia,Romania,Renewable Energy,Equity,46.85
+2018,Europe & Central Asia,Kazakhstan,Renewable Energy,Bond,830.65
+2018,Middle East & North Africa,Morocco,Renewable Energy,Grant,307.58
+2018,Middle East & North Africa,Egypt,Renewable Energy,Equity,0.01
+2018,Middle East & North Africa,Egypt,Renewable Energy,Non-Concessional Loan,79.55
+2018,Middle East & North Africa,Jordan,Renewable Energy,Bond,782.39
+2018,Middle East & North Africa,Tunisia,Renewable Energy,Non-Concessional Loan,28.61
+2019,Sub-Saharan Africa,Kenya,Renewable Energy,Bond,1465.62
+2019,Sub-Saharan Africa,Kenya,Renewable Energy,Non-Concessional Loan,207.13
+2019,Sub-Saharan Africa,Nigeria,Renewable Energy,Equity,1526.23
+2019,Sub-Saharan Africa,Nigeria,Renewable Energy,Non-Concessional Loan,844.15
+2019,Sub-Saharan Africa,South Africa,Renewable Energy,Non-Concessional Loan,136.07
+2019,Sub-Saharan Africa,South Africa,Renewable Energy,Equity,264.29
+2019,Sub-Saharan Africa,Ethiopia,Renewable Energy,Equity,52.81
+2019,Sub-Saharan Africa,Ethiopia,Renewable Energy,Equity,324.75
+2019,Sub-Saharan Africa,Ghana,Renewable Energy,Equity,566.3
+2019,Sub-Saharan Africa,Tanzania,Renewable Energy,Bond,310.75
+2019,South Asia,India,Renewable Energy,Bond,130.25
+2019,South Asia,India,Renewable Energy,Bond,86.31
+2019,South Asia,Bangladesh,Renewable Energy,Grant,40.36
+2019,South Asia,Bangladesh,Renewable Energy,Non-Concessional Loan,242.56
+2019,South Asia,Pakistan,Renewable Energy,Bond,1307.19
+2019,South Asia,Sri Lanka,Renewable Energy,Equity,395.43
+2019,South Asia,Nepal,Renewable Energy,Non-Concessional Loan,109.27
+2019,South Asia,Nepal,Renewable Energy,Non-Concessional Loan,336.96
+2019,East Asia & Pacific,China,Renewable Energy,Bond,332.34
+2019,East Asia & Pacific,Indonesia,Renewable Energy,Equity,972.82
+2019,East Asia & Pacific,Indonesia,Renewable Energy,Bond,497.33
+2019,East Asia & Pacific,Vietnam,Renewable Energy,Grant,7.1
+2019,East Asia & Pacific,Philippines,Renewable Energy,Grant,598.71
+2019,East Asia & Pacific,Thailand,Renewable Energy,Bond,192.86
+2019,East Asia & Pacific,Thailand,Renewable Energy,Non-Concessional Loan,213.47
+2019,Latin America & Caribbean,Brazil,Renewable Energy,Bond,139.22
+2019,Latin America & Caribbean,Mexico,Renewable Energy,Non-Concessional Loan,21.66
+2019,Latin America & Caribbean,Colombia,Renewable Energy,Equity,22.4
+2019,Latin America & Caribbean,Colombia,Renewable Energy,Equity,48.76
+2019,Latin America & Caribbean,Chile,Renewable Energy,Equity,743.63
+2019,Latin America & Caribbean,Argentina,Renewable Energy,Bond,336.1
+2019,Latin America & Caribbean,Argentina,Renewable Energy,Non-Concessional Loan,210.39
+2019,Europe & Central Asia,Turkey,Renewable Energy,Bond,983.51
+2019,Europe & Central Asia,Ukraine,Renewable Energy,Equity,233.81
+2019,Europe & Central Asia,Ukraine,Renewable Energy,Grant,112.69
+2019,Europe & Central Asia,Poland,Renewable Energy,Equity,429.84
+2019,Europe & Central Asia,Poland,Renewable Energy,Equity,293.73
+2019,Europe & Central Asia,Romania,Renewable Energy,Equity,40.75
+2019,Europe & Central Asia,Kazakhstan,Renewable Energy,Non-Concessional Loan,29.93
+2019,Europe & Central Asia,Kazakhstan,Renewable Energy,Grant,168.36
+2019,Middle East & North Africa,Morocco,Renewable Energy,Non-Concessional Loan,696.77
+2019,Middle East & North Africa,Morocco,Renewable Energy,Bond,249.19
+2019,Middle East & North Africa,Egypt,Renewable Energy,Non-Concessional Loan,547.43
+2019,Middle East & North Africa,Egypt,Renewable Energy,Non-Concessional Loan,388.17
+2019,Middle East & North Africa,Jordan,Renewable Energy,Equity,81.29
+2019,Middle East & North Africa,Jordan,Renewable Energy,Equity,1482.26
+2019,Middle East & North Africa,Tunisia,Renewable Energy,Bond,14.19
+2019,Middle East & North Africa,Tunisia,Renewable Energy,Non-Concessional Loan,349.14
+2020,Sub-Saharan Africa,Kenya,Renewable Energy,Grant,69.78
+2020,Sub-Saharan Africa,Nigeria,Renewable Energy,Equity,1410.37
+2020,Sub-Saharan Africa,Nigeria,Renewable Energy,Bond,116.46
+2020,Sub-Saharan Africa,South Africa,Renewable Energy,Bond,8.59
+2020,Sub-Saharan Africa,Ethiopia,Renewable Energy,Non-Concessional Loan,893.49
+2020,Sub-Saharan Africa,Ethiopia,Renewable Energy,Equity,201.05
+2020,Sub-Saharan Africa,Ghana,Renewable Energy,Non-Concessional Loan,82.25
+2020,Sub-Saharan Africa,Ghana,Renewable Energy,Non-Concessional Loan,25.7
+2020,Sub-Saharan Africa,Tanzania,Renewable Energy,Bond,628.61
+2020,South Asia,India,Renewable Energy,Equity,720.1
+2020,South Asia,Bangladesh,Renewable Energy,Equity,399.38
+2020,South Asia,Bangladesh,Renewable Energy,Equity,25.21
+2020,South Asia,Pakistan,Renewable Energy,Equity,731.73
+2020,South Asia,Pakistan,Renewable Energy,Non-Concessional Loan,333.49
+2020,South Asia,Sri Lanka,Renewable Energy,Equity,86.88
+2020,South Asia,Nepal,Renewable Energy,Non-Concessional Loan,872.08
+2020,South Asia,Nepal,Renewable Energy,Grant,114.05
+2020,East Asia & Pacific,China,Renewable Energy,Non-Concessional Loan,22.21
+2020,East Asia & Pacific,Indonesia,Renewable Energy,Non-Concessional Loan,1890.64
+2020,East Asia & Pacific,Vietnam,Renewable Energy,Grant,17.47
+2020,East Asia & Pacific,Vietnam,Renewable Energy,Equity,82.55
+2020,East Asia & Pacific,Philippines,Renewable Energy,Non-Concessional Loan,163.86
+2020,East Asia & Pacific,Thailand,Renewable Energy,Equity,28.8
+2020,East Asia & Pacific,Thailand,Renewable Energy,Equity,52.65
+2020,Latin America & Caribbean,Brazil,Renewable Energy,Equity,25.63
+2020,Latin America & Caribbean,Mexico,Renewable Energy,Grant,59.04
+2020,Latin America & Caribbean,Colombia,Renewable Energy,Equity,400.08
+2020,Latin America & Caribbean,Colombia,Renewable Energy,Equity,172.81
+2020,Latin America & Caribbean,Chile,Renewable Energy,Non-Concessional Loan,9.19
+2020,Latin America & Caribbean,Argentina,Renewable Energy,Grant,19.2
+2020,Latin America & Caribbean,Argentina,Renewable Energy,Non-Concessional Loan,1161.78
+2020,Europe & Central Asia,Turkey,Renewable Energy,Equity,36.68
+2020,Europe & Central Asia,Ukraine,Renewable Energy,Equity,311.56
+2020,Europe & Central Asia,Poland,Renewable Energy,Grant,28.07
+2020,Europe & Central Asia,Romania,Renewable Energy,Bond,699.88
+2020,Europe & Central Asia,Kazakhstan,Renewable Energy,Grant,648.2
+2020,Europe & Central Asia,Kazakhstan,Renewable Energy,Non-Concessional Loan,239.83
+2020,Middle East & North Africa,Morocco,Renewable Energy,Equity,94.23
+2020,Middle East & North Africa,Egypt,Renewable Energy,Non-Concessional Loan,377.94
+2020,Middle East & North Africa,Egypt,Renewable Energy,Bond,695.22
+2020,Middle East & North Africa,Jordan,Renewable Energy,Grant,415.25
+2020,Middle East & North Africa,Jordan,Renewable Energy,Bond,391.46
+2020,Middle East & North Africa,Tunisia,Renewable Energy,Equity,433.82
+2020,Middle East & North Africa,Tunisia,Renewable Energy,Equity,78.05
+2021,Sub-Saharan Africa,Kenya,Renewable Energy,Non-Concessional Loan,59.16
+2021,Sub-Saharan Africa,Nigeria,Renewable Energy,Non-Concessional Loan,490.65
+2021,Sub-Saharan Africa,Nigeria,Renewable Energy,Non-Concessional Loan,202.93
+2021,Sub-Saharan Africa,South Africa,Renewable Energy,Equity,432.5
+2021,Sub-Saharan Africa,Ethiopia,Renewable Energy,Non-Concessional Loan,112.76
+2021,Sub-Saharan Africa,Ghana,Renewable Energy,Equity,246.39
+2021,Sub-Saharan Africa,Ghana,Renewable Energy,Bond,191.99
+2021,Sub-Saharan Africa,Tanzania,Renewable Energy,Bond,611.46
+2021,South Asia,India,Renewable Energy,Non-Concessional Loan,191.14
+2021,South Asia,Bangladesh,Renewable Energy,Non-Concessional Loan,300.89
+2021,South Asia,Bangladesh,Renewable Energy,Equity,285.93
+2021,South Asia,Pakistan,Renewable Energy,Equity,150.74
+2021,South Asia,Pakistan,Renewable Energy,Equity,330.07
+2021,South Asia,Sri Lanka,Renewable Energy,Bond,346.5
+2021,South Asia,Nepal,Renewable Energy,Equity,427.08
+2021,East Asia & Pacific,China,Renewable Energy,Grant,428.53
+2021,East Asia & Pacific,Indonesia,Renewable Energy,Bond,761.06
+2021,East Asia & Pacific,Indonesia,Renewable Energy,Equity,124.82
+2021,East Asia & Pacific,Vietnam,Renewable Energy,Equity,91.2
+2021,East Asia & Pacific,Philippines,Renewable Energy,Non-Concessional Loan,412.59
+2021,East Asia & Pacific,Philippines,Renewable Energy,Equity,716.93
+2021,East Asia & Pacific,Thailand,Renewable Energy,Equity,297.42
+2021,Latin America & Caribbean,Brazil,Renewable Energy,Equity,205.42
+2021,Latin America & Caribbean,Brazil,Renewable Energy,Non-Concessional Loan,836.56
+2021,Latin America & Caribbean,Mexico,Renewable Energy,Grant,8.12
+2021,Latin America & Caribbean,Mexico,Renewable Energy,Grant,278.69
+2021,Latin America & Caribbean,Colombia,Renewable Energy,Grant,645.73
+2021,Latin America & Caribbean,Colombia,Renewable Energy,Bond,92.68
+2021,Latin America & Caribbean,Chile,Renewable Energy,Equity,131.07
+2021,Latin America & Caribbean,Argentina,Renewable Energy,Equity,892.37
+2021,Europe & Central Asia,Turkey,Renewable Energy,Non-Concessional Loan,461.56
+2021,Europe & Central Asia,Turkey,Renewable Energy,Bond,600.28
+2021,Europe & Central Asia,Ukraine,Renewable Energy,Grant,471.0
+2021,Europe & Central Asia,Ukraine,Renewable Energy,Equity,209.12
+2021,Europe & Central Asia,Poland,Renewable Energy,Bond,597.6
+2021,Europe & Central Asia,Romania,Renewable Energy,Equity,102.31
+2021,Europe & Central Asia,Romania,Renewable Energy,Non-Concessional Loan,475.77
+2021,Europe & Central Asia,Kazakhstan,Renewable Energy,Equity,259.37
+2021,Middle East & North Africa,Morocco,Renewable Energy,Bond,192.89
+2021,Middle East & North Africa,Morocco,Renewable Energy,Non-Concessional Loan,1240.35
+2021,Middle East & North Africa,Egypt,Renewable Energy,Non-Concessional Loan,693.98
+2021,Middle East & North Africa,Jordan,Renewable Energy,Equity,498.11
+2021,Middle East & North Africa,Tunisia,Renewable Energy,Equity,28.61
+2021,Middle East & North Africa,Tunisia,Renewable Energy,Equity,120.35
+2022,Sub-Saharan Africa,Kenya,Renewable Energy,Non-Concessional Loan,444.46
+2022,Sub-Saharan Africa,Kenya,Renewable Energy,Grant,715.35
+2022,Sub-Saharan Africa,Nigeria,Renewable Energy,Bond,1527.27
+2022,Sub-Saharan Africa,Nigeria,Renewable Energy,Equity,361.72
+2022,Sub-Saharan Africa,South Africa,Renewable Energy,Equity,158.5
+2022,Sub-Saharan Africa,South Africa,Renewable Energy,Equity,2.53
+2022,Sub-Saharan Africa,Ethiopia,Renewable Energy,Equity,582.84
+2022,Sub-Saharan Africa,Ethiopia,Renewable Energy,Bond,1372.97
+2022,Sub-Saharan Africa,Ghana,Renewable Energy,Bond,2214.37
+2022,Sub-Saharan Africa,Tanzania,Renewable Energy,Bond,161.38
+2022,Sub-Saharan Africa,Tanzania,Renewable Energy,Equity,29.31
+2022,South Asia,India,Renewable Energy,Equity,41.84
+2022,South Asia,Bangladesh,Renewable Energy,Bond,360.32
+2022,South Asia,Pakistan,Renewable Energy,Non-Concessional Loan,182.43
+2022,South Asia,Pakistan,Renewable Energy,Bond,2242.2
+2022,South Asia,Sri Lanka,Renewable Energy,Equity,957.92
+2022,South Asia,Nepal,Renewable Energy,Grant,71.95
+2022,East Asia & Pacific,China,Renewable Energy,Equity,291.8
+2022,East Asia & Pacific,China,Renewable Energy,Equity,1712.04
+2022,East Asia & Pacific,Indonesia,Renewable Energy,Equity,616.09
+2022,East Asia & Pacific,Indonesia,Renewable Energy,Grant,80.98
+2022,East Asia & Pacific,Vietnam,Renewable Energy,Equity,5.45
+2022,East Asia & Pacific,Philippines,Renewable Energy,Equity,148.58
+2022,East Asia & Pacific,Thailand,Renewable Energy,Non-Concessional Loan,323.07
+2022,Latin America & Caribbean,Brazil,Renewable Energy,Equity,233.18
+2022,Latin America & Caribbean,Mexico,Renewable Energy,Equity,39.89
+2022,Latin America & Caribbean,Colombia,Renewable Energy,Non-Concessional Loan,306.57
+2022,Latin America & Caribbean,Colombia,Renewable Energy,Bond,1244.51
+2022,Latin America & Caribbean,Chile,Renewable Energy,Non-Concessional Loan,283.43
+2022,Latin America & Caribbean,Chile,Renewable Energy,Bond,339.71
+2022,Latin America & Caribbean,Argentina,Renewable Energy,Equity,865.43
+2022,Latin America & Caribbean,Argentina,Renewable Energy,Equity,240.74
+2022,Europe & Central Asia,Turkey,Renewable Energy,Non-Concessional Loan,105.23
+2022,Europe & Central Asia,Ukraine,Renewable Energy,Non-Concessional Loan,180.89
+2022,Europe & Central Asia,Ukraine,Renewable Energy,Bond,733.23
+2022,Europe & Central Asia,Poland,Renewable Energy,Grant,248.94
+2022,Europe & Central Asia,Romania,Renewable Energy,Equity,40.61
+2022,Europe & Central Asia,Romania,Renewable Energy,Bond,143.37
+2022,Europe & Central Asia,Kazakhstan,Renewable Energy,Grant,114.53
+2022,Europe & Central Asia,Kazakhstan,Renewable Energy,Equity,19.19
+2022,Middle East & North Africa,Morocco,Renewable Energy,Non-Concessional Loan,708.18
+2022,Middle East & North Africa,Morocco,Renewable Energy,Bond,1133.73
+2022,Middle East & North Africa,Egypt,Renewable Energy,Equity,742.52
+2022,Middle East & North Africa,Egypt,Renewable Energy,Grant,377.66
+2022,Middle East & North Africa,Jordan,Renewable Energy,Equity,849.78
+2022,Middle East & North Africa,Jordan,Renewable Energy,Non-Concessional Loan,922.61
+2022,Middle East & North Africa,Tunisia,Renewable Energy,Equity,3.4
+2022,Middle East & North Africa,Tunisia,Renewable Energy,Equity,811.2
+2023,Sub-Saharan Africa,Kenya,Renewable Energy,Equity,3056.08
+2023,Sub-Saharan Africa,Kenya,Renewable Energy,Equity,390.43
+2023,Sub-Saharan Africa,Nigeria,Renewable Energy,Non-Concessional Loan,187.77
+2023,Sub-Saharan Africa,Nigeria,Renewable Energy,Non-Concessional Loan,1308.42
+2023,Sub-Saharan Africa,South Africa,Renewable Energy,Bond,474.45
+2023,Sub-Saharan Africa,Ethiopia,Renewable Energy,Equity,185.56
+2023,Sub-Saharan Africa,Ethiopia,Renewable Energy,Equity,108.86
+2023,Sub-Saharan Africa,Ghana,Renewable Energy,Bond,176.74
+2023,Sub-Saharan Africa,Ghana,Renewable Energy,Equity,690.17
+2023,Sub-Saharan Africa,Tanzania,Renewable Energy,Non-Concessional Loan,51.51
+2023,South Asia,India,Renewable Energy,Bond,82.17
+2023,South Asia,Bangladesh,Renewable Energy,Equity,433.24
+2023,South Asia,Bangladesh,Renewable Energy,Grant,1469.84
+2023,South Asia,Pakistan,Renewable Energy,Grant,521.18
+2023,South Asia,Sri Lanka,Renewable Energy,Non-Concessional Loan,283.12
+2023,South Asia,Sri Lanka,Renewable Energy,Equity,591.48
+2023,South Asia,Nepal,Renewable Energy,Non-Concessional Loan,1035.98
+2023,East Asia & Pacific,China,Renewable Energy,Bond,96.0
+2023,East Asia & Pacific,Indonesia,Renewable Energy,Bond,126.15
+2023,East Asia & Pacific,Indonesia,Renewable Energy,Grant,122.26
+2023,East Asia & Pacific,Vietnam,Renewable Energy,Non-Concessional Loan,22.26
+2023,East Asia & Pacific,Philippines,Renewable Energy,Equity,685.05
+2023,East Asia & Pacific,Philippines,Renewable Energy,Bond,410.99
+2023,East Asia & Pacific,Thailand,Renewable Energy,Bond,243.48
+2023,East Asia & Pacific,Thailand,Renewable Energy,Equity,99.84
+2023,Latin America & Caribbean,Brazil,Renewable Energy,Bond,1035.06
+2023,Latin America & Caribbean,Mexico,Renewable Energy,Equity,215.16
+2023,Latin America & Caribbean,Colombia,Renewable Energy,Grant,592.3
+2023,Latin America & Caribbean,Colombia,Renewable Energy,Bond,414.06
+2023,Latin America & Caribbean,Chile,Renewable Energy,Equity,142.48
+2023,Latin America & Caribbean,Argentina,Renewable Energy,Grant,497.58
+2023,Latin America & Caribbean,Argentina,Renewable Energy,Bond,633.02
+2023,Europe & Central Asia,Turkey,Renewable Energy,Bond,98.05
+2023,Europe & Central Asia,Ukraine,Renewable Energy,Non-Concessional Loan,121.02
+2023,Europe & Central Asia,Poland,Renewable Energy,Bond,184.1
+2023,Europe & Central Asia,Poland,Renewable Energy,Bond,148.79
+2023,Europe & Central Asia,Romania,Renewable Energy,Non-Concessional Loan,131.41
+2023,Europe & Central Asia,Kazakhstan,Renewable Energy,Grant,3.37
+2023,Europe & Central Asia,Kazakhstan,Renewable Energy,Equity,231.84
+2023,Middle East & North Africa,Morocco,Renewable Energy,Non-Concessional Loan,518.44
+2023,Middle East & North Africa,Egypt,Renewable Energy,Non-Concessional Loan,1226.15
+2023,Middle East & North Africa,Jordan,Renewable Energy,Grant,686.19
+2023,Middle East & North Africa,Tunisia,Renewable Energy,Equity,280.43
+2024,Sub-Saharan Africa,Kenya,Renewable Energy,Equity,447.41
+2024,Sub-Saharan Africa,Nigeria,Renewable Energy,Grant,29.54
+2024,Sub-Saharan Africa,South Africa,Renewable Energy,Equity,1130.42
+2024,Sub-Saharan Africa,Ethiopia,Renewable Energy,Non-Concessional Loan,298.5
+2024,Sub-Saharan Africa,Ethiopia,Renewable Energy,Non-Concessional Loan,401.73
+2024,Sub-Saharan Africa,Ghana,Renewable Energy,Non-Concessional Loan,218.02
+2024,Sub-Saharan Africa,Ghana,Renewable Energy,Equity,880.46
+2024,Sub-Saharan Africa,Tanzania,Renewable Energy,Non-Concessional Loan,1119.87
+2024,Sub-Saharan Africa,Tanzania,Renewable Energy,Bond,924.95
+2024,South Asia,India,Renewable Energy,Bond,316.5
+2024,South Asia,Bangladesh,Renewable Energy,Bond,402.72
+2024,South Asia,Bangladesh,Renewable Energy,Non-Concessional Loan,571.3
+2024,South Asia,Pakistan,Renewable Energy,Equity,77.14
+2024,South Asia,Sri Lanka,Renewable Energy,Bond,377.44
+2024,South Asia,Nepal,Renewable Energy,Non-Concessional Loan,326.17
+2024,South Asia,Nepal,Renewable Energy,Bond,253.95
+2024,East Asia & Pacific,China,Renewable Energy,Bond,179.04
+2024,East Asia & Pacific,Indonesia,Renewable Energy,Non-Concessional Loan,303.67
+2024,East Asia & Pacific,Indonesia,Renewable Energy,Equity,263.6
+2024,East Asia & Pacific,Vietnam,Renewable Energy,Bond,448.77
+2024,East Asia & Pacific,Philippines,Renewable Energy,Grant,450.1
+2024,East Asia & Pacific,Thailand,Renewable Energy,Grant,508.3
+2024,East Asia & Pacific,Thailand,Renewable Energy,Bond,49.68
+2024,Latin America & Caribbean,Brazil,Renewable Energy,Equity,1195.32
+2024,Latin America & Caribbean,Brazil,Renewable Energy,Equity,135.5
+2024,Latin America & Caribbean,Mexico,Renewable Energy,Equity,1118.14
+2024,Latin America & Caribbean,Colombia,Renewable Energy,Non-Concessional Loan,665.8
+2024,Latin America & Caribbean,Colombia,Renewable Energy,Bond,916.24
+2024,Latin America & Caribbean,Chile,Renewable Energy,Bond,125.13
+2024,Latin America & Caribbean,Argentina,Renewable Energy,Bond,1203.54
+2024,Europe & Central Asia,Turkey,Renewable Energy,Bond,406.57
+2024,Europe & Central Asia,Turkey,Renewable Energy,Bond,1680.34
+2024,Europe & Central Asia,Ukraine,Renewable Energy,Non-Concessional Loan,950.35
+2024,Europe & Central Asia,Ukraine,Renewable Energy,Bond,1039.49
+2024,Europe & Central Asia,Poland,Renewable Energy,Bond,109.74
+2024,Europe & Central Asia,Romania,Renewable Energy,Grant,485.49
+2024,Europe & Central Asia,Romania,Renewable Energy,Equity,723.74
+2024,Europe & Central Asia,Kazakhstan,Renewable Energy,Bond,630.23
+2024,Middle East & North Africa,Morocco,Renewable Energy,Non-Concessional Loan,182.97
+2024,Middle East & North Africa,Egypt,Renewable Energy,Equity,927.6
+2024,Middle East & North Africa,Egypt,Renewable Energy,Equity,375.91
+2024,Middle East & North Africa,Jordan,Renewable Energy,Bond,912.4
+2024,Middle East & North Africa,Jordan,Renewable Energy,Equity,1354.58
+2024,Middle East & North Africa,Tunisia,Renewable Energy,Equity,720.31
+2025,Sub-Saharan Africa,Kenya,Renewable Energy,Equity,1156.17
+2025,Sub-Saharan Africa,Kenya,Renewable Energy,Equity,595.28
+2025,Sub-Saharan Africa,Nigeria,Renewable Energy,Equity,2532.71
+2025,Sub-Saharan Africa,South Africa,Renewable Energy,Equity,425.81
+2025,Sub-Saharan Africa,Ethiopia,Renewable Energy,Equity,86.67
+2025,Sub-Saharan Africa,Ethiopia,Renewable Energy,Equity,152.3
+2025,Sub-Saharan Africa,Ghana,Renewable Energy,Non-Concessional Loan,2757.9
+2025,Sub-Saharan Africa,Ghana,Renewable Energy,Bond,352.81
+2025,Sub-Saharan Africa,Tanzania,Renewable Energy,Equity,31.8
+2025,South Asia,India,Renewable Energy,Equity,71.95
+2025,South Asia,Bangladesh,Renewable Energy,Non-Concessional Loan,617.24
+2025,South Asia,Bangladesh,Renewable Energy,Equity,234.49
+2025,South Asia,Pakistan,Renewable Energy,Equity,416.95
+2025,South Asia,Pakistan,Renewable Energy,Grant,586.08
+2025,South Asia,Sri Lanka,Renewable Energy,Bond,244.7
+2025,South Asia,Nepal,Renewable Energy,Equity,146.66
+2025,East Asia & Pacific,China,Renewable Energy,Equity,1571.76
+2025,East Asia & Pacific,China,Renewable Energy,Non-Concessional Loan,1767.45
+2025,East Asia & Pacific,Indonesia,Renewable Energy,Equity,245.3
+2025,East Asia & Pacific,Indonesia,Renewable Energy,Non-Concessional Loan,81.45
+2025,East Asia & Pacific,Vietnam,Renewable Energy,Equity,2239.29
+2025,East Asia & Pacific,Vietnam,Renewable Energy,Bond,61.46
+2025,East Asia & Pacific,Philippines,Renewable Energy,Grant,256.14
+2025,East Asia & Pacific,Philippines,Renewable Energy,Bond,1020.19
+2025,East Asia & Pacific,Thailand,Renewable Energy,Bond,1669.13
+2025,Latin America & Caribbean,Brazil,Renewable Energy,Equity,1297.99
+2025,Latin America & Caribbean,Mexico,Renewable Energy,Bond,743.97
+2025,Latin America & Caribbean,Colombia,Renewable Energy,Equity,298.79
+2025,Latin America & Caribbean,Colombia,Renewable Energy,Bond,2324.85
+2025,Latin America & Caribbean,Chile,Renewable Energy,Non-Concessional Loan,128.61
+2025,Latin America & Caribbean,Argentina,Renewable Energy,Equity,2029.77
+2025,Latin America & Caribbean,Argentina,Renewable Energy,Grant,1397.48
+2025,Europe & Central Asia,Turkey,Renewable Energy,Equity,453.27
+2025,Europe & Central Asia,Turkey,Renewable Energy,Grant,64.34
+2025,Europe & Central Asia,Ukraine,Renewable Energy,Bond,603.28
+2025,Europe & Central Asia,Ukraine,Renewable Energy,Grant,142.74
+2025,Europe & Central Asia,Poland,Renewable Energy,Bond,358.34
+2025,Europe & Central Asia,Romania,Renewable Energy,Bond,176.39
+2025,Europe & Central Asia,Romania,Renewable Energy,Grant,3616.71
+2025,Europe & Central Asia,Kazakhstan,Renewable Energy,Bond,44.66
+2025,Middle East & North Africa,Morocco,Renewable Energy,Equity,2439.98
+2025,Middle East & North Africa,Egypt,Renewable Energy,Bond,2536.8
+2025,Middle East & North Africa,Egypt,Renewable Energy,Bond,444.12
+2025,Middle East & North Africa,Jordan,Renewable Energy,Bond,573.77
+2025,Middle East & North Africa,Jordan,Renewable Energy,Equity,628.47
+2025,Middle East & North Africa,Tunisia,Renewable Energy,Non-Concessional Loan,873.58

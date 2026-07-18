@@ -1,0 +1,16 @@
+[build]
+  publish = "dist"
+
+# No build command needed — run `python build_static.py` locally
+# and commit the dist/ folder, or set up a build command:
+# command = "pip install pandas && python build_static.py"
+
+[[headers]]
+  for = "/data/*"
+  [headers.values]
+    Cache-Control = "public, max-age=86400"
+
+[[headers]]
+  for = "/*.html"
+  [headers.values]
+    Cache-Control = "public, max-age=3600"
