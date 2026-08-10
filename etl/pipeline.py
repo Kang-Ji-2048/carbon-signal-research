@@ -7,6 +7,7 @@ import logging
 import pandas as pd
 
 import config
+
 from .aggregate import build_panel
 from .clean import clean_prices
 from .ingest import load_prices

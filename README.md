@@ -1,5 +1,7 @@
 # Does the carbon price predict green vs. brown equities?
 
+[![CI](https://github.com/Kang-Ji-2048/carbon-signal-research/actions/workflows/ci.yml/badge.svg)](https://github.com/Kang-Ji-2048/carbon-signal-research/actions/workflows/ci.yml)
+
 A reproducible quantitative study testing one hypothesis on real market data:
 
 > When carbon allowances get more expensive, do clean-energy equities subsequently
@@ -47,7 +49,31 @@ property of the parameter, not of the market.
 
 Nothing survives 20 bps of cost except the one cherry-picked cell.
 
-**3. In-sample and out-of-sample disagree**, which is what noise looks like:
+**3. The best cell fails a deflated Sharpe test.**
+The point above can be made precisely rather than rhetorically. The
+[Deflated Sharpe Ratio](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=2460551)
+(Bailey & López de Prado) raises the significance bar by the best result you would
+expect from *N* skill-free trials, and corrects for skew and kurtosis:
+
+| | |
+|---|---|
+| Best configuration (120d @ 0 bps) OOS Sharpe | 1.02 |
+| Naive probabilistic Sharpe vs zero | **96.9%** ← clears a 95% bar |
+| Expected best Sharpe from 20 skill-free trials | 0.71 |
+| **Deflated Sharpe** | **71.5%** ← fails |
+
+Judged alone, the best backtest looks significant. Judged against what twenty
+coin-flipping strategies would produce, it does not. The edge belongs to the search,
+not the market.
+
+**4. The sample was never long enough to settle it.**
+Minimum Track Record Length gives the sample size needed to demonstrate a given
+Sharpe at 95% confidence. To prove a Sharpe of 0.5 would take **9.9 years** of daily
+data; this study has **3.3**. So the null result is properly read as *inconclusive*,
+not as evidence that no effect exists — a distinction the headline t-statistic alone
+does not make.
+
+**5. In-sample and out-of-sample disagree**, which is what noise looks like:
 
 | Period | Window | Obs | Ann. return | Ann. vol | Sharpe (net) | Max DD | Ann. turnover |
 |---|---|---|---|---|---|---|---|
@@ -56,7 +82,7 @@ Nothing survives 20 bps of cost except the one cherry-picked cell.
 | Full sample | 2020-10-27 → 2026-08-10 | 1,452 | −1.63% | 10.45% | −0.11 | −26.8% | 6.8 |
 | Buy & hold GMB (OOS) | — | 872 | −18.66% | 35.56% | −0.40 | −62.4% | — |
 
-**4. What did work.** Two components behaved exactly as designed, independent of the
+**6. What did work.** Two components behaved exactly as designed, independent of the
 signal's failure:
 
 - **Volatility targeting.** Realised strategy volatility was **10.45%** against a 10%
@@ -105,7 +131,12 @@ These are the substance of the project, not decoration:
   price into today. Gaps longer than 3 days are left as NaN rather than invented.
 - **Costs and turnover always reported.** No gross-only results.
 - **HAC standard errors** on every regression.
-- **The whole parameter grid is published**, not the best cell.
+- **The whole parameter grid is published**, not the best cell — and the best cell is
+  then deflated for the size of the search rather than reported at face value.
+- **CI reruns the research end to end** on every push. Because the price history is
+  cached in the repo, GitHub Actions reproduces every figure above from scratch, on
+  three Python versions, without network access. If a refactor changes a published
+  number, the build says so.
 
 ### Honest limitations
 
@@ -133,7 +164,8 @@ python app.py --refresh        # fetch data, run ETL + research, launch dashboar
 | `python app.py --refresh` | Re-download prices, rerun everything |
 | `python app.py --research-only` | Print headline statistics, no dashboard |
 | `python build_static.py` | Emit a static site to `dist/` |
-| `python -m pytest tests/ -q` | Run the test suite (27 tests) |
+| `python -m pytest tests/ -q` | Run the test suite (44 tests) |
+| `ruff check .` | Lint |
 
 Market data is cached to `data/raw/prices.csv`, so every run after the first is
 deterministic and offline.
@@ -149,12 +181,15 @@ deterministic and offline.
 ```
 etl/         ingest (cached, TLS-aware) -> clean (missing-data policy) -> aggregate (factor)
 research/    signal.py (causal by construction) | backtest.py (the lag + costs)
-             stats.py (metrics, Newey-West)     | report.py (orchestration -> JSON)
+             stats.py (metrics, Newey-West,     | report.py (orchestration -> JSON)
+                       deflated Sharpe, MinTRL) |
 dashboard/   Dash layer; figures shared with the static build
-tests/       27 tests: P&L accounting, no-lookahead, stats, missing-data policy
+tests/       44 tests: P&L accounting, no-lookahead, selection-bias stats,
+             missing-data policy
 docs/        design spec
 ```
 
 ## Tech
 
-Python 3.13 · pandas · numpy · statsmodels (HAC) · Plotly / Dash · yfinance · pytest
+Python 3.13 · pandas · numpy · scipy · statsmodels (HAC) · Plotly / Dash · yfinance ·
+pytest · ruff · GitHub Actions

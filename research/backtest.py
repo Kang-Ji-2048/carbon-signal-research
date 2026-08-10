@@ -8,10 +8,10 @@ Two rules are enforced here and nowhere else, which is what makes them testable:
 
 from __future__ import annotations
 
-import numpy as np
 import pandas as pd
 
 import config
+
 from . import stats
 from .signal import build_signal
 

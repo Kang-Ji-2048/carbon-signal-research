@@ -82,6 +82,128 @@ def summarise(returns: pd.Series, positions: pd.Series | None = None) -> dict:
     return out
 
 
+def _sharpe_moments(returns: pd.Series) -> tuple[float, float, float, int]:
+    """Per-period Sharpe plus the skew and raw kurtosis the DSR formulas need.
+
+    These are *per-observation*, not annualised. Bailey and Lopez de Prado's
+    formulas are defined on the raw per-period ratio, and mixing in a sqrt(252)
+    would silently invalidate every result below.
+    """
+    from scipy import stats as sps
+
+    r = returns.dropna()
+    n = len(r)
+    sd = r.std(ddof=1)
+    if n < 3 or np.isnan(sd) or sd < 1e-12:
+        return float("nan"), float("nan"), float("nan"), n
+    sr = float(r.mean() / sd)
+    skew = float(sps.skew(r))
+    kurt = float(sps.kurtosis(r, fisher=False))  # raw, not excess
+    return sr, skew, kurt, n
+
+
+def probabilistic_sharpe_ratio(returns: pd.Series, benchmark_sr: float = 0.0) -> float:
+    """P(true Sharpe > ``benchmark_sr``), given the sample's length and shape.
+
+    ``benchmark_sr`` is a *per-period* Sharpe. Unlike a plain t-test this
+    penalises negative skew and fat tails, which is what makes it appropriate
+    for return series.
+    """
+    from scipy import stats as sps
+
+    sr, skew, kurt, n = _sharpe_moments(returns)
+    if np.isnan(sr):
+        return float("nan")
+    var = 1.0 - skew * sr + (kurt - 1.0) / 4.0 * sr**2
+    if var <= 0:
+        return float("nan")
+    return float(sps.norm.cdf((sr - benchmark_sr) * np.sqrt(n - 1) / np.sqrt(var)))
+
+
+def expected_max_sharpe(n_trials: int, sr_variance: float) -> float:
+    """Expected best per-period Sharpe from ``n_trials`` *skill-free* strategies.
+
+    This is the benchmark that a winning backtest has to beat. Search hard
+    enough over configurations and something will look good by chance; this
+    quantifies how good, so the comparison can be made explicitly.
+    """
+    from scipy import stats as sps
+
+    if n_trials < 2 or sr_variance <= 0 or np.isnan(sr_variance):
+        return float("nan")
+    euler = 0.5772156649015329
+    z1 = sps.norm.ppf(1.0 - 1.0 / n_trials)
+    z2 = sps.norm.ppf(1.0 - 1.0 / (n_trials * np.e))
+    return float(np.sqrt(sr_variance) * ((1.0 - euler) * z1 + euler * z2))
+
+
+def deflated_sharpe_ratio(returns: pd.Series, trial_sharpes: list[float]) -> dict:
+    """Deflate the observed Sharpe by the number of configurations tried.
+
+    ``trial_sharpes`` are the *annualised* Sharpes of every configuration in the
+    search, converted here to per-period units. The returned ``dsr`` is the
+    probability that the strategy's true Sharpe is positive *after* accounting
+    for that search. Conventionally, below 0.95 means "not demonstrated".
+    """
+    trials = np.asarray([s for s in trial_sharpes if s is not None and not np.isnan(s)],
+                        dtype=float)
+    if len(trials) < 2:
+        return {"error": "need at least two trials to deflate"}
+
+    per_period = trials / np.sqrt(config.TRADING_DAYS)
+    sr0 = expected_max_sharpe(len(per_period), float(np.var(per_period, ddof=1)))
+    sr, _, _, n = _sharpe_moments(returns)
+    if np.isnan(sr) or np.isnan(sr0):
+        return {"error": "insufficient data to deflate"}
+
+    return {
+        "n_trials": int(len(per_period)),
+        "observed_sharpe_ann": float(sr * np.sqrt(config.TRADING_DAYS)),
+        "expected_max_sharpe_ann": float(sr0 * np.sqrt(config.TRADING_DAYS)),
+        "psr_vs_zero": probabilistic_sharpe_ratio(returns, 0.0),
+        "dsr": probabilistic_sharpe_ratio(returns, sr0),
+        "n_obs": int(n),
+        "significant": bool(probabilistic_sharpe_ratio(returns, sr0) > 0.95),
+    }
+
+
+def min_track_record_length(
+    returns: pd.Series, target_sr_ann: float = 0.0, confidence: float = 0.95
+) -> dict:
+    """Observations needed to prove the Sharpe exceeds ``target_sr_ann``.
+
+    Answers the question a short backtest always invites: is this sample even
+    long enough to have detected the effect? If the required length exceeds the
+    sample, a null result is inconclusive rather than negative.
+    """
+    from scipy import stats as sps
+
+    sr, skew, kurt, n = _sharpe_moments(returns)
+    if np.isnan(sr):
+        return {"error": "insufficient data"}
+
+    target = target_sr_ann / np.sqrt(config.TRADING_DAYS)
+    edge = sr - target
+    if edge <= 0:
+        return {
+            "n_obs": int(n),
+            "required_obs": None,
+            "required_years": None,
+            "note": "observed Sharpe does not exceed the target, so no sample length suffices",
+        }
+
+    var = 1.0 - skew * sr + (kurt - 1.0) / 4.0 * sr**2
+    required = 1.0 + var * (sps.norm.ppf(confidence) / edge) ** 2
+    return {
+        "n_obs": int(n),
+        "required_obs": int(np.ceil(required)),
+        "required_years": float(required / config.TRADING_DAYS),
+        "have_years": float(n / config.TRADING_DAYS),
+        "sufficient": bool(n >= required),
+        "confidence": confidence,
+    }
+
+
 def newey_west_regression(y: pd.Series, x: pd.Series, maxlags: int | None = None) -> dict:
     """Regress ``y`` on ``x`` with HAC (Newey-West) standard errors.
 
