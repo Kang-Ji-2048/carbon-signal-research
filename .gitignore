@@ -11,6 +11,13 @@ dist/
 # Derived ETL output (regenerate with: python app.py --etl)
 data/processed/
 
+# Exported machine CA bundles (local TLS workaround, never portable)
+.certs/
+
+# Test / lint caches
+.pytest_cache/
+.ruff_cache/
+
 # Tooling / local
 .claude/
 .DS_Store

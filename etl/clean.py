@@ -1,139 +1,61 @@
-"""
-Data cleaning module.
+"""Calendar alignment and return computation.
 
-Handles:
-  - Column name standardisation
-  - Missing value imputation
-  - Type casting and validation
-  - Currency normalisation (all values to USD millions)
-  - Deduplication
+The missing-data policy matters more than it looks. Filling gaps in the wrong
+direction is the classic way to leak future information into a backtest, so the
+rules are explicit and narrow.
 """
+
+from __future__ import annotations
+
+import logging
 
 import pandas as pd
-import numpy as np
+
+log = logging.getLogger(__name__)
+
+MAX_FILL_DAYS = 3
 
 
-STANDARD_COLUMNS = {
-    "year": "year",
-    "region": "region",
-    "country": "country",
-    "sector": "sector",
-    "instrument_type": "instrument_type",
-    "amount_usd_mn": "amount_usd_mn",
-    "source": "source",
-}
+def align_calendar(prices: pd.DataFrame, max_fill: int = MAX_FILL_DAYS) -> pd.DataFrame:
+    """Align to a common trading calendar.
 
-VALID_SECTORS = {
-    "Renewable Energy",
-    "Energy Efficiency",
-    "Sustainable Transport",
-    "Climate Adaptation",
-    "Forestry & Land Use",
-    "Water & Waste Management",
-    "Cross-cutting",
-}
+    Gaps are filled *forward* only (a stale price is the last thing we actually
+    knew) and never backward, which would import tomorrow's price into today.
+    Runs longer than ``max_fill`` days are left as NaN rather than invented, and
+    leading NaNs before an asset's inception are preserved so that its history
+    never appears to start early.
+    """
+    df = prices.sort_index().copy()
+    df = df[~df.index.duplicated(keep="last")]
+    filled = df.ffill(limit=max_fill)
 
-VALID_INSTRUMENTS = {
-    "Grant",
-    "Concessional Loan",
-    "Non-Concessional Loan",
-    "Equity",
-    "Guarantee",
-    "Bond",
-    "Mixed/Other",
-}
+    # Restore pre-inception NaNs: ffill cannot create them, but being explicit
+    # documents that an asset contributes nothing before it existed.
+    for col in filled.columns:
+        first = df[col].first_valid_index()
+        if first is not None:
+            filled.loc[filled.index < first, col] = pd.NA
+
+    return filled.astype("float64")
 
 
-def _standardise_columns(df: pd.DataFrame) -> pd.DataFrame:
-    """Ensure consistent column names across sources."""
-    df = df.copy()
-    df.columns = df.columns.str.strip().str.lower().str.replace(" ", "_")
+def compute_returns(prices: pd.DataFrame) -> pd.DataFrame:
+    """Simple daily returns.
 
-    # Coalesce amount columns into a single column
-    amount_aliases = ["value_usd_mn", "amount_usd", "amount"]
-    for col in amount_aliases:
-        if col in df.columns and col != "amount_usd_mn":
-            if "amount_usd_mn" in df.columns:
-                df["amount_usd_mn"] = df["amount_usd_mn"].fillna(df[col])
-            else:
-                df = df.rename(columns={col: "amount_usd_mn"})
-            if col in df.columns and col != "amount_usd_mn":
-                df = df.drop(columns=[col])
-
-    # Coalesce instrument columns
-    instrument_aliases = ["finance_type", "instrument"]
-    for col in instrument_aliases:
-        if col in df.columns and col != "instrument_type":
-            if "instrument_type" in df.columns:
-                df["instrument_type"] = df["instrument_type"].fillna(df[col])
-            else:
-                df = df.rename(columns={col: "instrument_type"})
-            if col in df.columns and col != "instrument_type":
-                df = df.drop(columns=[col])
-
-    return df
+    Simple (not log) returns are used because portfolios aggregate linearly
+    across holdings: the return of an equal-weighted basket is the mean of its
+    constituents' simple returns, which is not true of log returns.
+    """
+    returns = prices.pct_change()
+    return returns.iloc[1:]
 
 
-def _clean_amounts(df: pd.DataFrame) -> pd.DataFrame:
-    """Convert amounts to numeric, drop negatives."""
-    df["amount_usd_mn"] = pd.to_numeric(df["amount_usd_mn"], errors="coerce")
-    df = df[df["amount_usd_mn"] > 0].copy()
-    df["amount_usd_mn"] = df["amount_usd_mn"].round(2)
-    return df
-
-
-def _normalise_categories(df: pd.DataFrame) -> pd.DataFrame:
-    """Map sector and instrument values to standard categories."""
-    df["sector"] = df["sector"].str.strip().str.title()
-    df["instrument_type"] = df["instrument_type"].str.strip().str.title()
-
-    df.loc[~df["sector"].isin(VALID_SECTORS), "sector"] = "Cross-cutting"
-    df.loc[
-        ~df["instrument_type"].isin(VALID_INSTRUMENTS), "instrument_type"
-    ] = "Mixed/Other"
-    return df
-
-
-def _fill_missing(df: pd.DataFrame) -> pd.DataFrame:
-    """Handle missing values."""
-    df["country"] = df["country"].fillna("Unspecified")
-    df["region"] = df["region"].fillna("Unspecified")
-    df = df.dropna(subset=["year", "amount_usd_mn"])
-    return df
-
-
-def _dedup(df: pd.DataFrame) -> pd.DataFrame:
-    """Remove duplicate records."""
-    before = len(df)
-    df = df.drop_duplicates(
-        subset=["year", "country", "sector", "instrument_type", "amount_usd_mn", "source"]
+def clean_prices(prices: pd.DataFrame) -> tuple[pd.DataFrame, pd.DataFrame]:
+    """Return ``(aligned_prices, returns)``."""
+    aligned = align_calendar(prices)
+    returns = compute_returns(aligned)
+    log.info(
+        "Cleaned %d rows spanning %s to %s",
+        len(returns), returns.index.min().date(), returns.index.max().date(),
     )
-    removed = before - len(df)
-    if removed:
-        print(f"  Removed {removed:,} duplicate records")
-    return df
-
-
-def clean_dataset(df: pd.DataFrame) -> pd.DataFrame:
-    """Run full cleaning pipeline on the raw combined dataset."""
-    print("  Standardising columns...")
-    df = _standardise_columns(df)
-
-    print("  Cleaning amounts...")
-    df = _clean_amounts(df)
-
-    print("  Normalising categories...")
-    df = _normalise_categories(df)
-
-    print("  Filling missing values...")
-    df = _fill_missing(df)
-
-    print("  Deduplicating...")
-    df = _dedup(df)
-
-    df["year"] = df["year"].astype(int)
-    df = df[list(STANDARD_COLUMNS.values())].copy()
-    df = df.sort_values(["year", "region", "sector"]).reset_index(drop=True)
-
-    print(f"  Clean dataset: {len(df):,} records")
-    return df
+    return aligned, returns
