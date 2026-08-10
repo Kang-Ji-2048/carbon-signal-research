@@ -1,0 +1,14 @@
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "UP", "B", "C4"]
+ignore = [
+    "E501",  # line length is handled by the formatter, not worth failing CI over
+    "C408",  # dict(...) is Plotly's own idiom for trace and layout options
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"

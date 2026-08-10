@@ -65,6 +65,30 @@ PAGE = """<!doctype html>
     market beta.</p>
   </section>
 
+  <section class="callout callout-blue">
+    <h2>Was the best result real, or just the best of twenty?</h2>
+    <div class="table-wrap">
+      <table class="plain">
+        <tbody>
+          <tr><td>Best configuration found</td><td>{best_lb}d lookback @ {best_cost:.0f} bps</td></tr>
+          <tr><td>Its out-of-sample Sharpe</td><td>{best_sr:.2f}</td></tr>
+          <tr><td>Naive confidence it beats zero (PSR)</td><td>{psr:.1%}</td></tr>
+          <tr><td>Expected best from {ntrials} skill-free trials</td><td>{srmax:.2f}</td></tr>
+          <tr><td><strong>Deflated Sharpe (after selection)</strong></td><td><strong>{dsr:.1%}</strong></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>Judged on its own, the best cell clears a 95% bar. Judged against the best
+    result {ntrials} skill-free strategies would produce by chance, it does not
+    &mdash; confidence falls from <strong>{psr:.1%}</strong> to
+    <strong>{dsr:.1%}</strong>. The apparent edge is a property of the search,
+    not the market.</p>
+    <p><strong>Was the sample even long enough?</strong> Demonstrating a Sharpe of
+    0.5 at 95% confidence would take <strong>{mtrl_years:.1f} years</strong> of
+    daily data. This study has {have_years:.1f}. So the null result is best read as
+    inconclusive rather than as evidence of no effect.</p>
+  </section>
+
   {charts}
 
   <section>
@@ -112,6 +136,12 @@ h2 { font-size: 1.1rem; margin: 0 0 .75rem; }
 }
 .callout p { margin: 0 0 .8rem; }
 .callout p:last-child { margin-bottom: 0; }
+.callout-blue { border-left-color: var(--blue); }
+.callout .table-wrap { border: 0; background: transparent; margin-bottom: 1rem; }
+table.plain { min-width: 0; font-size: .9rem; }
+table.plain td { border-bottom: 1px solid var(--line); }
+table.plain td:first-child { color: var(--muted); }
+table.plain td:last-child { font-weight: 600; }
 .chart {
   background: #fff; border: 1px solid var(--line); border-radius: 10px;
   padding: .5rem; margin: 1.25rem 0;
@@ -190,6 +220,9 @@ def build(refresh: bool = False, rerun: bool = False) -> Path:
     perf, t = report["performance"], report["predictive_test"]
     sens = pd.DataFrame(report["sensitivity"])
     u, s = report["universe"], report["sample"]
+    sb = report["selection_bias"]
+    db = sb["deflated_best"]
+    mtrl = sb["min_track_record_to_prove_sharpe_0p5"]
 
     kpis = "".join([
         _kpi("Out-of-sample Sharpe", f"{perf['out_of_sample']['sharpe']:.2f}", "net of costs", "#6b7785"),
@@ -212,6 +245,10 @@ def build(refresh: bool = False, rerun: bool = False) -> Path:
         corr=report["factor"]["vs_market_full"]["correlation"],
         generated=report["generated"], cost=report["parameters"]["cost_bps"],
         nobs=s["backtest_obs"],
+        best_lb=sb["best_config"]["lookback"], best_cost=sb["best_config"]["cost_bps"],
+        best_sr=db["observed_sharpe_ann"], psr=db["psr_vs_zero"],
+        ntrials=db["n_trials"], srmax=db["expected_max_sharpe_ann"], dsr=db["dsr"],
+        mtrl_years=mtrl["required_years"], have_years=mtrl["have_years"],
     )
 
     (DIST / "index.html").write_text(html, encoding="utf-8")

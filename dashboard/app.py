@@ -195,11 +195,53 @@ def findings_panel(report: dict) -> dbc.Card:
     ]), className="shadow-sm border-start border-4", style={"borderColor": RED})
 
 
+def selection_bias_panel(report: dict) -> dbc.Card:
+    """Show the naive verdict and the deflated one side by side."""
+    sb = report["selection_bias"]
+    d, best = sb["deflated_best"], sb["best_config"]
+    mtrl = sb["min_track_record_to_prove_sharpe_0p5"]
+
+    rows = [
+        ("Best configuration found", f"{best['lookback']}d lookback @ {best['cost_bps']:.0f} bps"),
+        ("Its out-of-sample Sharpe", f"{d['observed_sharpe_ann']:.2f}"),
+        ("Naive confidence it beats zero (PSR)", f"{d['psr_vs_zero']:.1%}"),
+        ("Expected best from 20 skill-free trials", f"{d['expected_max_sharpe_ann']:.2f}"),
+        ("Deflated Sharpe (after selection)", f"{d['dsr']:.1%}"),
+    ]
+
+    return dbc.Card(dbc.CardBody([
+        html.H5("Was the best result real, or just the best of twenty?", className="mb-3"),
+        html.Table([html.Tbody([
+            html.Tr([
+                html.Td(k, style={"padding": "4px 14px 4px 0", "color": "#6b7785"}),
+                html.Td(v, style={"padding": "4px 0", "fontWeight": 600, "textAlign": "right"}),
+            ]) for k, v in rows
+        ])], style={"width": "100%", "fontSize": "0.9rem"}),
+        html.Hr(),
+        html.P([
+            "Judged on its own, the best cell clears a 95% bar. Judged against the "
+            "best result twenty skill-free strategies would produce by chance, it does "
+            "not — confidence falls from ",
+            html.Strong(f"{d['psr_vs_zero']:.1%}"), " to ",
+            html.Strong(f"{d['dsr']:.1%}", style={"color": RED}),
+            ". The apparent edge is a property of the search, not the market.",
+        ], className="mb-2"),
+        html.P([
+            html.Strong("Was the sample even long enough? "),
+            "Demonstrating a Sharpe of 0.5 at 95% confidence would take ",
+            html.Strong(f"{mtrl['required_years']:.1f} years"),
+            f" of daily data. This study has {mtrl['have_years']:.1f}. So the null result "
+            "is best read as inconclusive rather than as evidence of no effect.",
+        ], className="mb-0", style={"fontSize": "0.92rem"}),
+    ]), className="shadow-sm h-100")
+
+
 def create_layout(report: dict) -> html.Div:
     perf = report["performance"]
-    oos, full = perf["out_of_sample"], perf["full_sample"]
+    full = perf["full_sample"]
     t = report["predictive_test"]
     sample = report["sample"]
+    d_best = report["selection_bias"]["deflated_best"]
 
     return dbc.Container([
         html.Div([
@@ -214,19 +256,22 @@ def create_layout(report: dict) -> html.Div:
         ]),
 
         dbc.Row([
-            dbc.Col(kpi_card("Out-of-sample Sharpe", _fmt_num(oos["sharpe"], 2),
-                             "net of costs", GREY), md=3),
+            dbc.Col(kpi_card("Best-cell OOS Sharpe", _fmt_num(d_best["observed_sharpe_ann"], 2),
+                             f"naive confidence {d_best['psr_vs_zero']:.0%}", GREY), md=3),
+            dbc.Col(kpi_card("Deflated Sharpe", f"{d_best['dsr']:.0%}",
+                             "after 20 trials — not significant", RED), md=3),
             dbc.Col(kpi_card("Predictive t-stat", _fmt_num(t["t_stat"], 2),
-                             f"p = {t['p_value']:.2f} — not significant", RED), md=3),
+                             f"p = {t['p_value']:.2f}", RED), md=3),
             dbc.Col(kpi_card("Realised vol", _fmt_pct(full["ann_vol"], 1),
-                             f"vs {_fmt_pct(report['parameters']['target_vol'], 0)} target", GREEN), md=3),
-            dbc.Col(kpi_card("Correlation to S&P", _fmt_num(report["factor"]["vs_market_full"]["correlation"], 3),
-                             "a distinct factor", BLUE), md=3),
+                             f"vs {_fmt_pct(report['parameters']['target_vol'], 0)} target — risk model held", GREEN), md=3),
         ], className="g-3 my-2"),
 
         dbc.Row(dbc.Col(findings_panel(report)), className="my-3"),
 
-        dbc.Row(dbc.Col(dcc.Graph(figure=sensitivity_figure(report))), className="my-2"),
+        dbc.Row([
+            dbc.Col(dcc.Graph(figure=sensitivity_figure(report)), md=7),
+            dbc.Col(selection_bias_panel(report), md=5),
+        ], className="my-2 g-3"),
         dbc.Row(dbc.Col(dcc.Graph(figure=equity_figure(report))), className="my-2"),
         dbc.Row([
             dbc.Col(dcc.Graph(figure=drawdown_figure(report)), md=6),

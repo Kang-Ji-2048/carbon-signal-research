@@ -11,8 +11,9 @@ import pandas as pd
 
 import config
 from etl.pipeline import load_panel
+
 from . import stats
-from .backtest import evaluate, run_backtest, sensitivity_sweep
+from .backtest import evaluate, run_backtest, sensitivity_sweep, split_sample
 from .signal import build_signal
 
 log = logging.getLogger(__name__)
@@ -81,6 +82,40 @@ def predictive_test(panel: pd.DataFrame, lookback: int = config.CARBON_LOOKBACK)
     return result
 
 
+def selection_bias_analysis(panel: pd.DataFrame, sweep: pd.DataFrame, bt: pd.DataFrame) -> dict:
+    """Quantify how much of the best backtest is explained by having searched.
+
+    Two questions a short, heavily-searched backtest always invites:
+      1. The best cell looks good - but I tried N configurations. Is it real?
+         -> Deflated Sharpe, which raises the bar by the expected best result
+            from N skill-free trials.
+      2. My headline result is weak. Was the sample even long enough to detect
+         anything? -> Minimum track record length.
+    """
+    trial_sharpes = sweep["oos_sharpe"].tolist()
+    best = sweep.loc[sweep["oos_sharpe"].idxmax()]
+
+    best_sig = build_signal(panel, lookback=int(best["lookback"]))
+    best_bt = run_backtest(panel, best_sig["position"], cost_bps=float(best["cost_bps"]))
+    _, best_oos = split_sample(best_bt)
+
+    _, headline_oos = split_sample(bt)
+
+    return {
+        "best_config": {
+            "lookback": int(best["lookback"]),
+            "cost_bps": float(best["cost_bps"]),
+            "oos_sharpe": float(best["oos_sharpe"]),
+        },
+        "deflated_best": stats.deflated_sharpe_ratio(best_oos["net_return"], trial_sharpes),
+        "deflated_headline": stats.deflated_sharpe_ratio(headline_oos["net_return"], trial_sharpes),
+        "min_track_record_best": stats.min_track_record_length(best_oos["net_return"]),
+        "min_track_record_to_prove_sharpe_0p5": stats.min_track_record_length(
+            best_oos["net_return"], target_sr_ann=0.5
+        ),
+    }
+
+
 def build_report(refresh: bool = False) -> dict:
     panel = load_panel(refresh=refresh)
     sig = build_signal(panel)
@@ -118,6 +153,7 @@ def build_report(refresh: bool = False) -> dict:
         },
         "factor": factor_characterisation(panel),
         "predictive_test": predictive_test(panel),
+        "selection_bias": selection_bias_analysis(panel, sweep, bt),
         "performance": perf,
         "sensitivity": sweep.to_dict(orient="records"),
         "series": {
