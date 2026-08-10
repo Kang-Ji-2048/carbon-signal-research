@@ -36,7 +36,14 @@ jobs:
       - name: Build static site
         run: python build_static.py --rerun
 
+      # enablement provisions the Pages site if it does not already exist.
+      # Without it the first run of this workflow fails on a fresh repo (or a
+      # fork) with "Get Pages site failed", because the action can configure a
+      # site but not create one.
       - uses: actions/configure-pages@v5
+        with:
+          enablement: true
+
       - uses: actions/upload-pages-artifact@v3
         with:
           path: dist
