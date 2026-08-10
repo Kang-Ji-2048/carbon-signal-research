@@ -1,44 +1,33 @@
-"""
-Main ETL pipeline orchestrator.
+"""Orchestrate ingest -> clean -> aggregate into the research panel."""
 
-Runs ingest -> clean -> aggregate and persists the processed output.
-"""
+from __future__ import annotations
+
+import logging
 
 import pandas as pd
-from pathlib import Path
 
-from .ingest import ingest_all_sources
-from .clean import clean_dataset
-from .aggregate import aggregate_dataset
+import config
+from .aggregate import build_panel
+from .clean import clean_prices
+from .ingest import load_prices
 
-PROCESSED_DIR = Path(__file__).resolve().parent.parent / "data" / "processed"
+log = logging.getLogger(__name__)
 
 
-def run_pipeline() -> dict[str, pd.DataFrame]:
-    """Execute the full ETL pipeline and save processed data."""
-    PROCESSED_DIR.mkdir(parents=True, exist_ok=True)
+def run_pipeline(refresh: bool = False) -> pd.DataFrame:
+    """Run the full ETL and persist the panel. Returns the panel."""
+    prices = load_prices(refresh=refresh)
+    aligned, returns = clean_prices(prices)
+    panel = build_panel(aligned, returns)
 
-    print("\n[1/3] INGESTING data sources...")
-    raw = ingest_all_sources()
+    config.DATA_PROCESSED.mkdir(parents=True, exist_ok=True)
+    panel.to_csv(config.PANEL_CSV)
+    log.info("Wrote panel to %s", config.PANEL_CSV)
+    return panel
 
-    print("\n[2/3] CLEANING dataset...")
-    clean = clean_dataset(raw)
 
-    # Save the unified clean dataset
-    clean_path = PROCESSED_DIR / "climate_finance_clean.csv"
-    clean.to_csv(clean_path, index=False)
-    print(f"  Saved clean dataset -> {clean_path}")
-
-    print("\n[3/3] AGGREGATING views...")
-    views = aggregate_dataset(clean)
-
-    # Persist each aggregated view
-    for name, view_df in views.items():
-        if name == "detail":
-            continue
-        out_path = PROCESSED_DIR / f"{name}.csv"
-        view_df.to_csv(out_path, index=False)
-        print(f"  Saved {name} -> {out_path}")
-
-    print("\nETL pipeline complete.\n")
-    return views
+def load_panel(refresh: bool = False) -> pd.DataFrame:
+    """Return the cached panel, building it when missing."""
+    if config.PANEL_CSV.exists() and not refresh:
+        return pd.read_csv(config.PANEL_CSV, index_col="date", parse_dates=["date"])
+    return run_pipeline(refresh=refresh)

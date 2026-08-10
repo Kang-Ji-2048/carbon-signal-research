@@ -1,44 +1,50 @@
-"""
-Aggregation module.
+"""Build the research panel: baskets, the GMB factor, and carbon features."""
 
-Produces pre-aggregated views used by the dashboard:
-  - By year + sector
-  - By year + region
-  - By year + instrument type
-  - By year + region + sector (full detail)
-"""
+from __future__ import annotations
+
+import logging
 
 import pandas as pd
 
+import config
 
-def _agg_by(df: pd.DataFrame, group_cols: list[str]) -> pd.DataFrame:
-    """Aggregate amount by given grouping columns."""
-    return (
-        df.groupby(group_cols, as_index=False)["amount_usd_mn"]
-        .agg(total_usd_mn="sum", flow_count="count")
-        .round(2)
+log = logging.getLogger(__name__)
+
+
+def basket_return(returns: pd.DataFrame, tickers: list[str]) -> pd.Series:
+    """Equal-weighted, daily-rebalanced basket return.
+
+    ``mean`` skips NaNs, so a basket stays well defined before every constituent
+    has listed; it simply holds the members that exist on that date.
+    """
+    present = [t for t in tickers if t in returns.columns]
+    if not present:
+        raise ValueError(f"none of {tickers} present in returns")
+    return returns[present].mean(axis=1, skipna=True)
+
+
+def build_panel(prices: pd.DataFrame, returns: pd.DataFrame) -> pd.DataFrame:
+    """Assemble the per-date research panel.
+
+    Columns:
+      green, brown   equal-weighted basket returns
+      gmb            green minus brown, the long/short factor
+      benchmark      SPY return, for beta and alpha attribution
+      carbon         KRBN return
+      carbon_px      KRBN level, used to build momentum features
+    """
+    panel = pd.DataFrame(index=returns.index)
+    panel["green"] = basket_return(returns, config.GREEN)
+    panel["brown"] = basket_return(returns, config.BROWN)
+    panel["gmb"] = panel["green"] - panel["brown"]
+    panel["benchmark"] = returns[config.BENCHMARK]
+    panel["carbon"] = returns[config.CARBON]
+    panel["carbon_px"] = prices[config.CARBON].reindex(panel.index)
+
+    panel = panel.dropna(subset=["gmb"])
+    log.info(
+        "Panel: %d rows, %s to %s (carbon available from %s)",
+        len(panel), panel.index.min().date(), panel.index.max().date(),
+        panel["carbon_px"].first_valid_index().date(),
     )
-
-
-def aggregate_dataset(df: pd.DataFrame) -> dict[str, pd.DataFrame]:
-    """Produce all aggregation views from the cleaned dataset."""
-    views = {}
-
-    views["by_year_sector"] = _agg_by(df, ["year", "sector"])
-    print(f"  by_year_sector: {len(views['by_year_sector']):,} rows")
-
-    views["by_year_region"] = _agg_by(df, ["year", "region"])
-    print(f"  by_year_region: {len(views['by_year_region']):,} rows")
-
-    views["by_year_instrument"] = _agg_by(df, ["year", "instrument_type"])
-    print(f"  by_year_instrument: {len(views['by_year_instrument']):,} rows")
-
-    views["by_year_region_sector"] = _agg_by(df, ["year", "region", "sector"])
-    print(f"  by_year_region_sector: {len(views['by_year_region_sector']):,} rows")
-
-    views["by_source"] = _agg_by(df, ["year", "source"])
-    print(f"  by_source: {len(views['by_source']):,} rows")
-
-    views["detail"] = df.copy()
-
-    return views
+    return panel

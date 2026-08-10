@@ -1,56 +1,56 @@
 """
-Climate Finance Dashboard — Main Entry Point
+Carbon Signal Research — Main Entry Point
 
 Usage:
-    # First run: generate sample data and run ETL
-    python generate_sample_data.py
-    python app.py --etl
+    # First run: fetch market data, run ETL + research, launch dashboard
+    python app.py --refresh
 
-    # Subsequent runs: just launch the dashboard
+    # Subsequent runs: use cached data
     python app.py
 
-    # Run ETL only (no dashboard)
-    python app.py --etl-only
+    # Rebuild the research results only (no dashboard)
+    python app.py --research-only
 """
 
 import argparse
-from pathlib import Path
+import logging
 
-from etl.pipeline import run_pipeline
-from dashboard.app import load_data, create_app
-
-PROCESSED_DIR = Path(__file__).parent / "data" / "processed"
+from research.report import load_report, save_report
 
 
 def main():
-    parser = argparse.ArgumentParser(description="Climate Finance ETL & Dashboard")
-    parser.add_argument("--etl", action="store_true", help="Run ETL pipeline before launching dashboard")
-    parser.add_argument("--etl-only", action="store_true", help="Run ETL pipeline only (no dashboard)")
+    parser = argparse.ArgumentParser(description="Carbon Signal Research & Dashboard")
+    parser.add_argument("--refresh", action="store_true", help="Re-download market data before running")
+    parser.add_argument("--research-only", action="store_true", help="Rebuild results, do not launch the dashboard")
     parser.add_argument("--port", type=int, default=8050, help="Dashboard port (default: 8050)")
     parser.add_argument("--debug", action="store_true", help="Run in debug mode")
     args = parser.parse_args()
 
-    # Check if processed data exists
-    clean_file = PROCESSED_DIR / "climate_finance_clean.csv"
-    need_etl = args.etl or args.etl_only or not clean_file.exists()
+    logging.basicConfig(level=logging.INFO, format="%(levelname)s  %(message)s")
 
-    if need_etl:
-        print("=" * 60)
-        print("  CLIMATE FINANCE ETL PIPELINE")
-        print("=" * 60)
-        run_pipeline()
+    if args.refresh or args.research_only:
+        print("=" * 64)
+        print("  RUNNING ETL + RESEARCH PIPELINE")
+        print("=" * 64)
+        report = save_report(refresh=args.refresh)
+    else:
+        report = load_report()
 
-    if args.etl_only:
+    if args.research_only:
+        oos = report["performance"]["out_of_sample"]
+        test = report["predictive_test"]
+        print(f"\nOut-of-sample Sharpe : {oos['sharpe']:.3f}")
+        print(f"Predictive t-stat    : {test['t_stat']:.3f}  (p = {test['p_value']:.3f})")
         return
 
-    # Launch dashboard
-    print("=" * 60)
+    from dashboard.app import create_app
+
+    print("=" * 64)
     print("  LAUNCHING DASHBOARD")
     print(f"  http://localhost:{args.port}")
-    print("=" * 60)
+    print("=" * 64)
 
-    views = load_data()
-    app = create_app(views)
+    app = create_app(report)
     app.run(debug=args.debug, port=args.port)
 
 
